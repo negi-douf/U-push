@@ -1,6 +1,20 @@
 <div class="container">
-  <div class="col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
-    <h1>Pages#index</h1>
+  <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
+    <h1>登録ページ</h1>
+    <br />
 
+    <div class="url_form">
+      <%= form_for(@page) do |f| %>
+        <%= f.text_field :url, class: "form-control" %>
+        <%= f.submit "登録", class: "btn btn-primary" %>
+      <% end %>
+      <br />
+    </div>
+
+    <% @pages.each do |page| %>
+      <div class="urls">
+        <%= link_to page.url %>
+      <div>
+    <% end %>
   </div>
 </div>
