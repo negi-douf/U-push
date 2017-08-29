@@ -1,4 +1,6 @@
 class PagesController < ApplicationController
+  # エラーメッセージを格納するグローバル変数
+  $errors = []
 
   def index
     @pages = Page.all.sort.reverse
@@ -7,12 +9,26 @@ class PagesController < ApplicationController
 
   def create
     @page = Page.new(pages_params)
-    @page.save
+    if @page.save
+      flash[:success] = "ページを登録しました！"
+    else
+      flash[:danger] = "ページを登録できませんでした。"
+      $errors = @page.errors.full_messages
+      set_errors
+    end
     redirect_to root_path
   end
 
   def destroy
     @page = Page.find_by(id: params[:id])
+    if @page.destroy
+      flash[:success] = "ページを削除しました！"
+    else
+      flash[:danger] = "Picture の削除に失敗しました"
+      $errors = @page.errors.full_messages
+      set_errors
+    end
+    redirect_to root_path
   end
 
 
@@ -20,6 +36,14 @@ class PagesController < ApplicationController
 
   def pages_params
     params.require(:page).permit(:url)
+  end
+
+  # エラーメッセージがあれば格納する
+  def set_errors
+    unless $errors.empty?
+      @errors = $errors
+      $errors = []
+    end
   end
 
 end

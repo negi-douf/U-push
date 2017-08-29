@@ -1,0 +1,10 @@
+<% if @errors %>
+  <div id="error_explanation">
+    <h2><%= @errors.count %>件のエラーがあります。</h2>
+    <ul>
+      <% @errors.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
