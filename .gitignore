@@ -14,3 +14,5 @@
 
 /.env
 public/assets/*
+
+/config/settings.yml
