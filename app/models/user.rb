@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   def self.find_for_line_oauth(auth, signed_in_resource=nil)
-    user = User.find_by(provider: auth.provider, uid: auth.uid)
+    user = User.find_by(uid: auth.uid)
 
     unless user
       user = User.new(
