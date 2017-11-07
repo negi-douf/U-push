@@ -1,9 +1,8 @@
 
 <div class="container">
   <div class="col col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
-    <h2>ログイン</h2>
-    <br />
-
-    <%= link_to "Lineでログイン", user_line_omniauth_authorize_path %>
+    <div class="login">
+      <%= link_to  image_tag("/assets/btn_login_base.png", :mouseover => "/assets/btn_login_hover.png"), user_line_omniauth_authorize_path %>
+    </div>
   </div>
 </div>
