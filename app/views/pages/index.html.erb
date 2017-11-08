@@ -1,18 +1,22 @@
 <div class="container">
   <div class="col col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
-    <% flash.each do |message_type, message| %>
-      <div class="alert alert-<%= message_type %>"><%= message %></div>
-    <% end %>
 
-    <% if @page.errors.any? %>
-      <div class="error_explanation">
-        <h3><%= review.errors.count %>件のエラーがあります。</h3>
-        <ul>
-          <% review.errors.each do |msg| %>
-            <li><%= msg %></li>
-          <% end %>
-        </ul>
-      </div>
+    <% begin %>
+      <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type %>"><%= message %></div>
+        <% end %>
+
+        <% if @page.errors.any? %>
+        <div class="error_explanation">
+          <h3><%= review.errors.count %>件のエラーがあります。</h3>
+          <ul>
+            <% review.errors.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    <% rescue %>
     <% end %>
 
     <div class="url_form">
