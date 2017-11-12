@@ -8,6 +8,7 @@ class PagesController < ApplicationController
 
   def create
     @page = Page.new(pages_params)
+    @page.user_id = current_user.id
     if @page.save
       flash[:success] = "ページを登録しました！"
     else

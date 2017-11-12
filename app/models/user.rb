@@ -1,9 +1,10 @@
 class User < ActiveRecord::Base
-
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
+
+  has_many :pages
 
   def self.find_for_line_oauth(auth, signed_in_resource=nil)
     user = User.find_by(uid: auth.uid)
