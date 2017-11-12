@@ -13,6 +13,8 @@ gem 'twitter-bootstrap-rails'
 gem 'devise'
 gem "omniauth-line"
 gem "rails_12factor"
+gem "line-bot-api"
+gem "dotenv-rails"
 
 group :development, :test do
   gem 'byebug'
