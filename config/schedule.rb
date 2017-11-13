@@ -3,11 +3,12 @@
 # It's helpful, but not entirely necessary to understand cron before proceeding.
 # http://en.wikipedia.org/wiki/Cron
 
-set :output, "/path/to/my/cron_log.log"
+set :output, "log/cron_log.log"
+set :environment, :production
 
-every 1.day, at: '12:00' do
+every 1.day, at: "12:00" do
   # Rails 内のメソッド実行例
-  runner 'PagesController.check'
+  runner "PagesController.check"
 end
 
 # Learn more: http://github.com/javan/whenever
