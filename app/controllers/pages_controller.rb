@@ -11,6 +11,9 @@ class PagesController < ApplicationController
     @page.user_id = current_user.id
     if @page.save
       flash[:success] = "ページを登録しました！"
+      # アクセスしてみる
+      # ハッシュをとる
+      # 属性として保持
     else
       flash[:danger] = "ページを登録できませんでした。"
     end
@@ -25,6 +28,19 @@ class PagesController < ApplicationController
       flash[:danger] = "Picture の削除に失敗しました"
     end
     redirect_to root_path
+  end
+
+  # 更新をチェックする
+  # 1日1度呼ばれる
+  def check
+    Page.all.each do |page|
+      # アクセス
+      # ハッシュ
+      # 前と比較
+      # 違っていたら
+        # 更新
+        # 通知
+    end
   end
 
   private
