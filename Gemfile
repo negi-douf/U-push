@@ -15,7 +15,7 @@ gem "omniauth-line"
 gem "rails_12factor"
 gem "line-bot-api"
 gem "dotenv-rails"
-gem "whenever"
+gem "whenever", require: false
 
 group :development, :test do
   gem 'byebug'

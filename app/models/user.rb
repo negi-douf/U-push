@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
-  has_many :pages
+  has_many :pagesd, dependent: :destroy
 
   def self.find_for_line_oauth(auth, signed_in_resource=nil)
     user = User.find_by(uid: auth.uid)

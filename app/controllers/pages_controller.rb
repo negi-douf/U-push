@@ -32,7 +32,7 @@ class PagesController < ApplicationController
 
   # 更新をチェックする
   # 1日1度呼ばれる
-  def check
+  def self.check
     Page.all.each do |page|
       # アクセス
       # ハッシュ
@@ -41,7 +41,7 @@ class PagesController < ApplicationController
         # 更新
         # 通知
     end
-    @page = Page.new(url: "http://test.co.jp/index.html", user_id: 1)
+    @page = Page.new(url: "http://test.co.jp/new.html", user_id: 1, last_hash: "yeah")
     @page.save
   end
 
