@@ -15,10 +15,10 @@ gem "omniauth-line"
 gem "rails_12factor"
 gem "line-bot-api"
 gem "dotenv-rails"
-gem "whenever", require: false
 
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
   gem 'spring'
+  gem "whenever", require: false
 end
