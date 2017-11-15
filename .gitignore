@@ -17,4 +17,3 @@ public/assets/*
 
 /config/settings.yml
 /config/schedule.rb
-/config/initializers/devise.rb
