@@ -4,9 +4,9 @@
 # http://en.wikipedia.org/wiki/Cron
 
 set :output, "log/cron_log.log"
-set :environment, :production
+set :environment, :development
 
-every 1.day, at: "12:48" do
+every 1.day, at: "12:00" do
   # Rails 内のメソッド実行例
   runner "PagesController.check"
 end
