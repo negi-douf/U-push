@@ -1,7 +1,7 @@
 production: &production
   line:
-    key: 1536186439
-    secret: 7508b268a54fa7547831413a033c2391
+    key: 1546681411
+    secret: e15d3e05e8b98b70329c51133ef0259b
 development: &development
   line:
     key: 1536186439
