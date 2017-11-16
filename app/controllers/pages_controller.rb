@@ -41,6 +41,8 @@ class PagesController < ApplicationController
         # 更新
         # 通知
     end
+    @page = Page.new(url: "http://hoge.co.jp/", user_id: 1)
+    @page.save
   end
 
   private
