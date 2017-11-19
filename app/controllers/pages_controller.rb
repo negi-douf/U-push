@@ -1,6 +1,9 @@
 class PagesController < ApplicationController
   before_action :authenticate_user!
 
+  require "open-uri"
+  require "digest/sha1"
+
   def index
     @pages = Page.all.sort.reverse
     @page = Page.new
@@ -34,15 +37,20 @@ class PagesController < ApplicationController
   # 1日1度呼ばれる
   def self.check
     Page.all.each do |page|
-      # アクセス
-      # ハッシュ
-      # 前と比較
-      # 違っていたら
-        # 更新
-        # 通知
+      begin
+        now_hash = Digest::SHA1::hexdigest open(page.url).read
+        if now_hash != page.last_hash
+          puts "The page has updated.: #{page.url}"
+          page.last_hash = now_hash
+          page.save
+          # Bot 処理
+        else
+          puts "The page has not updated.: #{page.url}"
+        end
+      rescue => e
+        puts("#{e}: #{page.url}")
+      end
     end
-    @page = Page.new(url: "http://hoge.co.jp/", user_id: 1)
-    @page.save
   end
 
   private
