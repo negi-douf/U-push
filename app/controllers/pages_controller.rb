@@ -43,7 +43,8 @@ class PagesController < ApplicationController
           puts "The page has updated.: #{page.url}"
           page.last_hash = now_hash
           page.save
-          # Bot 処理
+          @line_client ||= LineClient.new
+          @line_client.push(page)
         else
           puts "The page has not updated.: #{page.url}"
         end
