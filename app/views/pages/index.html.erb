@@ -11,9 +11,9 @@
 
         <% if @page.errors.any? %>
         <div class="error_explanation">
-          <h3><%= review.errors.count %>件のエラーがあります。</h3>
+          <h3><%= @page.errors.count %>件のエラーがあります。</h3>
           <ul>
-            <% review.errors.each do |msg| %>
+            <% @page.errors.each do |msg| %>
               <li><%= msg %></li>
             <% end %>
           </ul>
@@ -30,10 +30,15 @@
       <br />
     </div>
 
-    <% @pages.each do |page| %>
-      <div class="urls">
-        <%= link_to page.url %>
-      <div>
-    <% end %>
+    <div class="urls row">
+      <% @pages.each do |page| %>
+        <div class="url col-md-12">
+          <%= link_to page.url %>
+          <div class="delete-button">
+            <%= link_to "", page_path(page.id), class: "fa fa-trash-o fa-lg", method: :delete, data: { confirm: "本当に削除してよろしいですか？"} %>
+          </div>
+        </div>
+      <% end %>
+    <div>
   </div>
 </div>
