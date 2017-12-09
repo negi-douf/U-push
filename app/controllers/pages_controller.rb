@@ -12,13 +12,16 @@ class PagesController < ApplicationController
   def create
     @page = Page.new(pages_params)
     @page.user_id = current_user.id
-    if @page.save
-      flash[:success] = "ページを登録しました！"
-      # アクセスしてみる
-      # ハッシュをとる
-      # 属性として保持
-    else
-      flash[:danger] = "ページを登録できませんでした。"
+    begin
+      @page.last_hash = Digest::SHA1::hexdigest open(@page.url).read
+      if @page.save
+        flash[:success] = "ページを登録しました！"
+      else
+        flash[:danger] = "ページを登録できませんでした。"
+      end
+    rescue => e
+      puts("#{e}: #{@page.url}")
+      flash[:danger] = "ページにアクセスできませんでした。"
     end
     redirect_to root_path
   end
