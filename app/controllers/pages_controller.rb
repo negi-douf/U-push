@@ -8,7 +8,7 @@ class PagesController < ApplicationController
     @pages = Page.all.sort.reverse
     @page = Page.new
   end
-
+  
   def create
     @page = Page.new(pages_params)
     @page.user_id = current_user.id
@@ -23,6 +23,7 @@ class PagesController < ApplicationController
       puts("#{e}: #{@page.url}")
       flash[:danger] = "ページにアクセスできませんでした。"
     end
+    # もう一度処理をおこなう必要があるため redirect_to
     redirect_to root_path
   end
 
