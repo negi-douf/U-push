@@ -8,6 +8,7 @@
 public/assets/*
 /config/settings.yml
 /config/schedule.rb
+/config/secrets.yml
 
 # Ignore bundler config.
 /.bundle
