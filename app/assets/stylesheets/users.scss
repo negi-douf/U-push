@@ -1,0 +1,20 @@
+.login {
+  text-align: center;
+  margin-top: 200px;
+  margin-bottom: 200px;
+}
+
+.login a {
+  width: 303px;
+  height: 88px;
+  background: image-url("btn_login_base.png") no-repeat;
+  display: inline-block;
+
+  &:hover {
+    background: image-url("btn_login_hover.png") no-repeat;
+  }
+
+  &:active {
+    background: image-url("btn_login_press.png") no-repeat;
+  }
+}
